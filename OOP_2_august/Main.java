@@ -10,7 +10,7 @@ public class Main {
                     {"5", "6", "3", "4"},
                     {"1", "6", "3", "7"},
                     {"1", "2", "9", "6"},
-                    {"1", "2", "4", "s"}
+                    {"1", "2", "4", "2"}
             };
 
             String[][] stringArray2 = new String[][] {
@@ -23,12 +23,11 @@ public class Main {
                     {"5", "6", "3", "4", "10"},
                     {"1", "8", "3", "7", "10"},
                     {"1", "2", "9", "6", "10"},
-                    {"1", "2", "4", "8", "10"},
                     {"1", "2", "4", "8", "10"}
             };
 
             try {
-                finalSum = CountElements(stringArray2);
+                finalSum = CountElements(stringArray1);
                 System.out.println(finalSum);
             } catch (MyArrayDataException e) {
                 e.printStackTrace();
@@ -38,9 +37,11 @@ public class Main {
         public  static Integer CountElements (String [][] array) throws MyArrayDataException {
             Integer sum = 0;
             try{
+                // массив первого уровня
                 if (array.length != massiveSize) {
                     throw new MyArraySizeException();
                 }
+                // массив второго уровня
                 for (int i = 0; i < array.length; i++) {
                     if (array[i].length != massiveSize) {
                         throw new MyArraySizeException();
@@ -52,7 +53,7 @@ public class Main {
             }
 
             for (int i = 0; i < array.length; i++) {
-                for (int j = 0; j < array[i].length; j++) {
+                for (int j = 0; j < array.length; j++) {
                     try{
                     sum = sum + Integer.valueOf(array[i][j]);
                     }catch (NumberFormatException  e){
